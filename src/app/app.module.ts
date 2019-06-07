@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component'
 import { UserListComponent } from './components/users/user-list/user-list.component'
 import { UsersComponent } from './components/users/users.component'
 import { UserService } from './services/user.service';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { UserService } from './services/user.service';
     HomeComponent,
     HeaderComponent,
     UserListComponent,
-    UsersComponent
+    UsersComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
