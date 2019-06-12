@@ -6,9 +6,10 @@ import { UserService } from '../../../services/user.service'
     templateUrl: "./user-list.component.html"
 })
 export class UserListComponent {
-    users
+    users: any
 
-    constructor(private userService: UserService) {}  
+    constructor(private userService: UserService) {     
+    }  
     
     ngOnInit() {
         this.users = this.userService.getUsers();

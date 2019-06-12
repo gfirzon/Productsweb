@@ -9,7 +9,7 @@
                  *ngFor="let user of users | async">
                 <div class="card">
                     <div class="card-content">
-                        <a routerLink="/users/{{ user.login }}">{{ user.login }}</a>
+                        <a routerLink="/user/{{ user.userID }}">{{ user.userName }}</a>
                     </div>
                 </div>
             </div>
