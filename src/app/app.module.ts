@@ -13,7 +13,10 @@ import { UserListComponent } from './components/users/user-list/user-list.compon
 import { UserDetailComponent } from './components/users/user-detail/user-detail.component'
 import { UsersComponent } from './components/users/users.component'
 import { UserService } from './services/user.service';
+import { VendorService } from './services/vendor.service';
 import { ContactComponent } from './components/contact/contact.component';
+import { VendorListComponent } from './components/vendors/vendor-list/vendor-list.component';
+import { VendorDetailComponent } from './components/vendors/vendor-detail/vendor-detail.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { ContactComponent } from './components/contact/contact.component';
     UserListComponent,
     UserDetailComponent,
     UsersComponent,
-    ContactComponent
+    ContactComponent,
+    VendorListComponent,
+    VendorDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,8 @@ import { ContactComponent } from './components/contact/contact.component';
     ReactiveFormsModule
   ],
   providers: [
-    UserService
+    UserService,
+    VendorService
   ],  
   bootstrap: [AppComponent]
 })
