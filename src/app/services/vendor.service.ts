@@ -1,25 +1,33 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs';
+import {IVendor} from '../models/IVendor'
 
 @Injectable()
 export class VendorService {
   //apiUrl = 'https://api.github.com/users'
   apiUrl = 'https://localhost:44353/api/Vendors'
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getVendors() {
     //return this.http.get(`${this.apiUrl}?per_page=100`)
     return this.http.get(`${this.apiUrl}`)
   }
 
-  getVendor(vendorId: number) {
-    console.log('vendorId', vendorId);
+  getVendor(vendorId: number) : Observable<IVendor> {
+    console.log('VendorService:getVendor vendorId', vendorId)
 
     let url = `${this.apiUrl}/${vendorId}`
     console.log('url', url);
-    
-    return this.http.get(url)
+
+    return this.http.get<IVendor>(url)
+  }
+
+  updateVendor(vendor: IVendor) {
+    console.log('updatevendor on vendor service is invoked', vendor)
+
+    return this.http.put(this.apiUrl, vendor)
   }
 
 }

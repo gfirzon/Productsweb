@@ -1,20 +1,45 @@
 <section class="section">
     <div class="container">
-        <h1>Vendor</h1>
 
+        <form [formGroup]="vendorForm" (ngSubmit)="onSubmit()"
+              class="text-center border border-light p-5">
+            <h1 class="title">Vendor</h1>
 
+            <input type="hidden" formControlName="vendorID">
 
-        <div>
-            {{vendor.vendorID}}
-        </div>
-        <div>
-            <label>Vendor Name</label>
-            <input type="text" [(ngModel)]="vendor.vendorName"/>
-        </div>
-        <div>
-            <label>Vendor Phone</label>
-            <input type="text" [(ngModel)]="vendor.vendorPhone"/>
-        </div>
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                    <input class="input"
+                           type="text"
+                           placeholder="vendor name..."
+                           formControlName="vendorName">
+                </div>
+                <p class="help">some help text</p>
+            </div>
+
+            <div class="field">
+                <label class="label">Phone</label>
+                <div class="control has-icons-left">
+                    <input class="input"
+                           type="text"
+                           placeholder="vendor phone number..."
+                           formControlName="vendorPhone">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-phone"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                    <button type="submit" class="button is-link">Submit</button>
+                </div>
+                <div class="control">
+                    <button class="button is-text">Cancel</button>
+                </div>
+            </div>
+        </form>
 
     </div>
 </section>
