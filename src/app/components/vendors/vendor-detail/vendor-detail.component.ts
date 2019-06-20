@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core"
 import { ActivatedRoute } from "@angular/router"
 import { Location } from '@angular/common'
-import { FormBuilder, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from "@angular/router"
 import { ToastrService } from 'ngx-toastr'
 import { VendorService } from '../../../services/vendor.service'
@@ -13,7 +13,7 @@ import { IVendor } from '../../../models/IVendor'
 })
 export class VendorDetailComponent implements OnInit {
 
-    vendorForm: any
+    vendorForm: FormGroup
 
     constructor(
         private route: ActivatedRoute,
