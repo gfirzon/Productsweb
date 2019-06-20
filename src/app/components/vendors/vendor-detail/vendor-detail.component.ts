@@ -2,10 +2,10 @@ import { Component, OnInit } from "@angular/core"
 import { ActivatedRoute } from "@angular/router"
 import { Location } from '@angular/common'
 import { FormBuilder, Validators } from '@angular/forms'
+import { Router } from "@angular/router"
 import { ToastrService } from 'ngx-toastr'
 import { VendorService } from '../../../services/vendor.service'
 import { IVendor } from '../../../models/IVendor'
-import { Router } from "@angular/router"
 
 @Component({
     selector: 'vendor-detail',
