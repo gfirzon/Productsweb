@@ -2,8 +2,10 @@ import { Component, OnInit } from "@angular/core"
 import { ActivatedRoute } from "@angular/router"
 import { Location } from '@angular/common'
 import { FormBuilder, Validators } from '@angular/forms'
+import { ToastrService } from 'ngx-toastr'
 import { VendorService } from '../../../services/vendor.service'
 import { IVendor } from '../../../models/IVendor'
+import { Router } from "@angular/router"
 
 @Component({
     selector: 'vendor-detail',
@@ -17,7 +19,9 @@ export class VendorDetailComponent implements OnInit {
         private route: ActivatedRoute,
         private vendorService: VendorService,
         private location: Location,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private router: Router,
+        private toastr: ToastrService        
     ) { }
 
     ngOnInit(): void {
@@ -53,10 +57,17 @@ export class VendorDetailComponent implements OnInit {
             console.log('Vendor form is valid!!', this.vendorForm.value)
             this.vendorService.updateVendor(this.vendorForm.value)
                 .subscribe((response) => {
-                    console.log('update response ', response);
+                    console.log('update response ', response)
+                    this.toastr.success("Vendor information saved")
                 })
         } else {
-            alert('User form is not valid!!')
+            //alert('User form is not valid!!')
+            this.toastr.warning("Vendor information is not complete to be saved")
         }
+    }
+
+    onCancel() {
+        console.log('cancel clicked ')
+        this.router.navigateByUrl('/vendors')
     }
 }

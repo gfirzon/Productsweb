@@ -17,7 +17,9 @@ import { VendorService } from './services/vendor.service'
 import { ContactComponent } from './components/contact/contact.component'
 import { VendorListComponent } from './components/vendors/vendor-list/vendor-list.component'
 import { VendorDetailComponent } from './components/vendors/vendor-detail/vendor-detail.component'
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AngularFontAwesomeModule } from 'angular-font-awesome'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     UserService,

@@ -37,3 +37,6 @@ https://www.techiediaries.com/angular-tutorial-forms-authentication-expressjs/
 https://appdividend.com/2018/10/24/angular-7-forms-tutorial-example/
 https://blog.jscrambler.com/building-user-registration-form-with-reactive-forms-in-angular-7/
 https://www.youtube.com/watch?v=aKTLabJ39Rk
+
+## Toast
+https://blog.jscrambler.com/how-to-create-angular-toastr-notifications/
