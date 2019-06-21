@@ -1,11 +1,13 @@
 <section class="section">
     <div class="container">
 
-        <form [formGroup]="vendorForm" (ngSubmit)="onSubmit()"
+        <form [formGroup]="vendorForm"
+              (ngSubmit)="onSubmit()"
               class="text-center border border-light p-5">
             <h1 class="title">Vendor</h1>
 
-            <input type="hidden" formControlName="vendorID">
+            <input type="hidden"
+                   formControlName="vendorID">
 
             <div class="field">
                 <label class="label">Name</label>
@@ -31,14 +33,30 @@
                 </div>
             </div>
 
+            <div class="field">
+                <label class="label">Email</label>
+                <div class="control has-icons-left">
+                    <input class="input"
+                           type="text"
+                           placeholder="Enter vendor email..."
+                           formControlName="email">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-envelope"></i>
+                    </span>
+                </div>
+            </div>
+
             <div class="field is-grouped">
 
                 <div class="control">
-                    <button type="submit" class="button is-link is-rounded">Submit</button>
+                    <button type="submit"
+                            class="button is-link is-rounded">Submit</button>
                 </div>
 
                 <div class="control">
-                    <button type="button" (click)="onCancel()" class="button is-link is-rounded is-warning">Cancel</button>
+                    <button type="button"
+                            (click)="onCancel()"
+                            class="button is-link is-rounded is-warning">Cancel</button>
                 </div>
             </div>
         </form>

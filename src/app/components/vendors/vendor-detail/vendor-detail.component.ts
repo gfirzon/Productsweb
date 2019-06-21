@@ -31,6 +31,7 @@ export class VendorDetailComponent implements OnInit {
             vendorID: [''],
             vendorName: ['', [Validators.required]],
             vendorPhone: ['', [Validators.required]],
+            email: ['', [Validators.required]],
             //vendorEmail: ['', [Validators.required, Validators.email]]
         })
     }
@@ -48,13 +49,15 @@ export class VendorDetailComponent implements OnInit {
         this.vendorForm.patchValue({
             vendorID: vendor.vendorID,
             vendorName: vendor.vendorName,
-            vendorPhone: vendor.vendorPhone
+            vendorPhone: vendor.vendorPhone,
+            email: vendor.email
         })
     }
 
     onSubmit() {
         if (this.vendorForm.valid) {
             console.log('Vendor form is valid!!', this.vendorForm.value)
+
             this.vendorService.updateVendor(this.vendorForm.value)
                 .subscribe((response) => {
                     console.log('update response ', response)
