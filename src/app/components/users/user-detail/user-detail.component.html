@@ -1,10 +1,57 @@
 <section class="section">
     <div class="container">
-        <h1>User</h1>
+
+        <div>
+            <label>User Name</label>
+            <input type="text"
+                   [(ngModel)]="user.userName" />
+        </div>
+        <br />
+        <div>
+            <label>User Password</label>
+            <input type="password"
+                   [(ngModel)]="user.userPassword" />
+        </div>
+        <br />
+
+        <div>
+            <label>User Active</label>
+            <input type="text"
+                   [(ngModel)]="user.isActive" />
+        </div>
+        <br />
+        <div>
+            <label>User Role ID</label>
+            <input type="text"
+                   [(ngModel)]="user.roleID" />
+        </div>
+        <br />
+        <div>
+            <button type="submit"
+                    class="button is-danger is-large">Submit</button>
+        </div>
+        <br />
+        <form action="">
+            User Name: <input type="text"
+                   name=uname
+                   [(ngModel)]="user.userName" /><br />
+            User Password: <input type="password"
+                   name=upass
+                   [(ngModel)]="user.userPassword" /><br />
+            User Active: <input type="text"
+                   name=uactive
+                   [(ngModel)]="user.isActive" /><br />
+            User Role ID: <input type="text"
+                   name=uroleId
+                   [(ngModel)]="user.roleID" /><br />
+            <input type="submit"
+                   value="Submit" /><br />
+            <input type="reset"
+                   value="Reset" />
 
 
-        {{user.userID}}
-        {{user.userName}}
+        </form>
+
 
     </div>
 </section>
