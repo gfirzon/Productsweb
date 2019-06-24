@@ -4,7 +4,10 @@ import { FormsModule } from '@angular/forms'
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module'
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { AngularFontAwesomeModule } from 'angular-font-awesome'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ToastrModule } from 'ngx-toastr'
 
 import { AppComponent } from './app.component'
 import { HomeComponent } from './components/home/home.component'
@@ -17,9 +20,8 @@ import { VendorService } from './services/vendor.service'
 import { ContactComponent } from './components/contact/contact.component'
 import { VendorListComponent } from './components/vendors/vendor-list/vendor-list.component'
 import { VendorDetailComponent } from './components/vendors/vendor-detail/vendor-detail.component'
-import { AngularFontAwesomeModule } from 'angular-font-awesome'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
+
+import { HttpErrorInterceptor } from './services/http-error.interceptor'
 
 @NgModule({
   declarations: [
@@ -46,8 +48,13 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   providers: [
     UserService,
-    VendorService
-  ],  
+    VendorService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -40,3 +40,6 @@ https://www.youtube.com/watch?v=aKTLabJ39Rk
 
 ## Toast
 https://blog.jscrambler.com/how-to-create-angular-toastr-notifications/
+
+## Error Handling in Services
+https://rollbar.com/blog/angular-6-error-tracking/?utm_source=google&utm_medium=cpc&keyword=&matchtype=b&GA_network=g&GA_device=c&GA_campaign=646473586&GA_adgroup=31657655359&GA_target=&GA_placement=&GA_creative=121451759359&GA_extension=&GA_keyword=&GA_loc_physical_ms=9026844&GA_landingpage=https://rollbar.com/blog/angular-6-error-tracking/&gclid=Cj0KCQjw6cHoBRDdARIsADiTTzangTGo1kcbKDU6Tal7_WAaAbChLLa5CBTE6sUlUW3mkpD62NRqkpMaAuweEALw_wcB

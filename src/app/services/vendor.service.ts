@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs'
+import { retry, catchError } from 'rxjs/operators'
 import {IVendor} from '../models/IVendor'
 
 @Injectable()
@@ -13,6 +14,10 @@ export class VendorService {
   getVendors() {
     //return this.http.get(`${this.apiUrl}?per_page=100`)
     return this.http.get(`${this.apiUrl}`)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
   }
 
   getVendor(vendorId: number) : Observable<IVendor> {
@@ -28,6 +33,19 @@ export class VendorService {
     console.log('updatevendor on vendor service is invoked', vendor)
 
     return this.http.put(this.apiUrl, vendor)
+  }
+
+  handleError(error) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
   }
 
 }
