@@ -1,57 +1,72 @@
 <section class="section">
-    <div class="container">
+       <div class="container">
 
-        <div>
-            <label>User Name</label>
-            <input type="text"
-                   [(ngModel)]="user.userName" />
-        </div>
-        <br />
-        <div>
-            <label>User Password</label>
-            <input type="password"
-                   [(ngModel)]="user.userPassword" />
-        </div>
-        <br />
+              <form [formGroup]="userForm"
+                    (ngSubmit)="onSubmit()"
+                    class="text-center border border-light p-5">
+                     <h1 class="title">User</h1>
 
-        <div>
-            <label>User Active</label>
-            <input type="text"
-                   [(ngModel)]="user.isActive" />
-        </div>
-        <br />
-        <div>
-            <label>User Role ID</label>
-            <input type="text"
-                   [(ngModel)]="user.roleID" />
-        </div>
-        <br />
-        <div>
-            <button type="submit"
-                    class="button is-danger is-large">Submit</button>
-        </div>
-        <br />
-        <form action="">
-            User Name: <input type="text"
-                   name=uname
-                   [(ngModel)]="user.userName" /><br />
-            User Password: <input type="password"
-                   name=upass
-                   [(ngModel)]="user.userPassword" /><br />
-            User Active: <input type="text"
-                   name=uactive
-                   [(ngModel)]="user.isActive" /><br />
-            User Role ID: <input type="text"
-                   name=uroleId
-                   [(ngModel)]="user.roleID" /><br />
-            <input type="submit"
-                   value="Submit" /><br />
-            <input type="reset"
-                   value="Reset" />
+                     <input type="hidden"
+                            formControlName="userID">
 
+                     <div class="field">
+                            <label class="label">Name</label>
+                            <div class="control">
+                                   <input class="input"
+                                          type="text"
+                                          placeholder="Enter user name..."
+                                          formControlName="userName">
+                            </div>
+                            <!--<p class="help">some help text</p>-->
+                     </div>
 
-        </form>
+                     <div class="field">
+                            <label class="label">Password</label>
+                            <div class="control has-icons-left">
+                                   <input class="input"
+                                          type="password"
+                                          placeholder="Enter user password..."
+                                          formControlName="userPassword">
+                                   <span class="icon is-small is-left">
+                                          <i class="fa fa-key fa-fw"></i>
+                                   </span>
+                            </div>
+                     </div>
 
+                     <div class="field">
+                            <label class="label">Active</label>
+                            <div class="control">
+                                   <input class="input"
+                                          type="number"
+                                          placeholder="Enter 1 if user active, 0 if not..."
+                                          formControlName="isActive">
+                            </div>
+                     </div>
 
-    </div>
+                     <div class="field">
+                            <label class="label">Role ID</label>
+                            <div class="control">
+                                   <input class="input"
+                                          type="number"
+                                          placeholder="Enter user role ID..."
+                                          formControlName="roleID">
+                            </div>
+                     </div>
+
+                     <div class="field is-grouped">
+
+                            <div class="control">
+                                   <button type="submit"
+                                           class="button is-link is-rounded">Submit</button>
+                            </div>
+
+                            <div class="control">
+                                   <button type="button"
+                                           (click)="onCancel()"
+                                           class="button is-link is-rounded is-warning">Cancel</button>
+                            </div>
+                     </div>
+              </form>
+
+       </div>
 </section>
