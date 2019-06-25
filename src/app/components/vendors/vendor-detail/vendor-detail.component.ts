@@ -31,7 +31,7 @@ export class VendorDetailComponent implements OnInit {
             vendorID: [''],
             vendorName: ['', [Validators.required]],
             vendorPhone: ['', [Validators.required]],
-            email: ['', [Validators.required]],
+            email: ['', [Validators.required, Validators.email]],
             //vendorEmail: ['', [Validators.required, Validators.email]]
         })
     }

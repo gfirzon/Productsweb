@@ -12,12 +12,7 @@ export class VendorService {
   constructor(private http: HttpClient) { }
 
   getVendors() {
-    //return this.http.get(`${this.apiUrl}?per_page=100`)
     return this.http.get(`${this.apiUrl}`)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
   }
 
   getVendor(vendorId: number) : Observable<IVendor> {
