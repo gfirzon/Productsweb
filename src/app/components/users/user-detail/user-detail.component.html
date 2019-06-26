@@ -36,20 +36,20 @@
                      <div class="field">
                             <label class="label">Active</label>
                             <div class="control">
-                                   <input class="input"
-                                          type="number"
-                                          placeholder="Enter 1 if user active, 0 if not..."
+                                   <input class=""
+                                          type="checkbox"
                                           formControlName="isActive">
                             </div>
                      </div>
 
                      <div class="field">
-                            <label class="label">Role ID</label>
+                            <label class="label">Role</label>
                             <div class="control">
-                                   <input class="input"
-                                          type="number"
-                                          placeholder="Enter user role ID..."
-                                          formControlName="roleID">
+                                   <select formControlName="roleID">
+                                          <option value="1">System Administrator</option>
+                                          <option value="2">Company Administrator</option>
+                                          <option value="3">User</option>
+                                   </select>
                             </div>
                      </div>
 

@@ -48,7 +48,7 @@ export class UserDetailComponent implements OnInit {
         this.userForm.patchValue({
             userID: user.userID,
             userName: user.userName,
-            userPassword: user.userPassword,
+            userPassword: '',
             isActive: user.isActive,
             roleID: user.roleID
         })
@@ -58,7 +58,7 @@ export class UserDetailComponent implements OnInit {
         if (this.userForm.valid) {
             console.log('User form is valid!!', this.userForm.value)
 
-            this.userService.updateUser(this.userForm.value)
+            this.userService.updateUser(this.userForm.value)          
                 .subscribe((response) => {
                     console.log('update response ', response)
                     this.toastr.success("User information saved")
@@ -71,6 +71,6 @@ export class UserDetailComponent implements OnInit {
 
     onCancel() {
         console.log('cancel clicked ')
-        this.router.navigateByUrl('/user')
+        this.router.navigateByUrl('/users')
     }
 }

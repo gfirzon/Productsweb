@@ -2,6 +2,6 @@ export interface IUser {
     userID: number
     userName: string
     userPassword: string
-    isActive: number
+    isActive: boolean
     roleID: number
 }
