@@ -14,6 +14,7 @@ import { IVendor } from '../../../models/IVendor'
 export class VendorDetailComponent implements OnInit {
 
     vendorForm: FormGroup
+    isNew: boolean
 
     constructor(
         private route: ActivatedRoute,
@@ -21,27 +22,32 @@ export class VendorDetailComponent implements OnInit {
         private location: Location,
         private formBuilder: FormBuilder,
         private router: Router,
-        private toastr: ToastrService        
+        private toastr: ToastrService
     ) { }
 
     ngOnInit(): void {
         this.getVendor()
 
         this.vendorForm = this.formBuilder.group({
-            vendorID: [''],
+            vendorID: ['-1'],
             vendorName: ['', [Validators.required]],
             vendorPhone: ['', [Validators.required]],
-            email: ['', [Validators.required, Validators.email]],
-            //vendorEmail: ['', [Validators.required, Validators.email]]
+            email: ['', [Validators.required, Validators.email]]
         })
     }
 
     getVendor(): void {
         const id = + this.route.snapshot.paramMap.get('id')
-        this.vendorService.getVendor(id)
-            .subscribe(
-                (vendor: IVendor) => this.showVendor(vendor)
-            )
+        if (id) {
+            this.isNew = false
+            this.vendorService.getVendor(id)
+                .subscribe(
+                    (vendor: IVendor) => this.showVendor(vendor)
+                )
+        }
+        else {
+            this.isNew = true
+        }
     }
 
     //perform work of binding retrived vendor data to form control
@@ -54,7 +60,23 @@ export class VendorDetailComponent implements OnInit {
         })
     }
 
-    onSubmit() {
+    createVendor() {
+        if (this.vendorForm.valid) {
+            console.log('Vendor form is valid!!', this.vendorForm.value)
+
+            this.vendorService.createVendor(this.vendorForm.value)
+                .subscribe((response) => {
+                    console.log('create response ', response)
+                    this.toastr.success("Vendor information saved")
+                })
+        }
+        else {
+            //alert('User form is not valid!!')
+            this.toastr.warning("Vendor information is not complete to be saved")
+        }
+    }
+
+    updateVendor() {
         if (this.vendorForm.valid) {
             console.log('Vendor form is valid!!', this.vendorForm.value)
 
@@ -63,10 +85,22 @@ export class VendorDetailComponent implements OnInit {
                     console.log('update response ', response)
                     this.toastr.success("Vendor information saved")
                 })
-        } else {
+        }
+        else {
             //alert('User form is not valid!!')
             this.toastr.warning("Vendor information is not complete to be saved")
         }
+    }
+
+
+    onSubmit() {
+        if (this.isNew == false) {
+            this.updateVendor()
+        }
+        else {
+            this.createVendor()
+        }
+
     }
 
     onCancel() {

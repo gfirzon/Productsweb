@@ -30,6 +30,12 @@ export class VendorService {
     return this.http.put(this.apiUrl, vendor)
   }
 
+  createVendor(vendor: IVendor) : Observable<number> {
+    console.log('createVendor on vendor service is invoked', vendor)
+
+    return this.http.post<number>(this.apiUrl, vendor)
+  }
+
   handleError(error) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

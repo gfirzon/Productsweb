@@ -34,6 +34,10 @@ const routes: Routes = [
     //loadChildren: 'app/vendors/vendors.module#VendorsModule'
   },
   {
+    path: 'vendor',
+    component: VendorDetailComponent
+  },  
+  {
     path: 'vendor/:id',
     component: VendorDetailComponent
     //loadChildren: 'app/users/users.module#UsersModule'
