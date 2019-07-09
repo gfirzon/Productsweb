@@ -11,7 +11,7 @@
             <!-- loop over our users and give them each a card -->
             <!--need to put back | async pipe-->
             <div class="column is-4"
-                 *ngFor="let vendor of vendors | async">
+                 *ngFor="let vendor of vendors">
                 <div class="card">
                     <div class="card-content">
                         <a routerLink="/vendor/{{ vendor.vendorID }}">{{ vendor.vendorName }}</a>

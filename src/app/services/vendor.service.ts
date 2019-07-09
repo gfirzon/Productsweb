@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable, throwError } from 'rxjs'
-import { retry, catchError } from 'rxjs/operators'
-import {IVendor} from '../models/IVendor'
+import { retry, catchError, tap } from 'rxjs/operators'
+import { IVendor } from '../models/IVendor'
 
 @Injectable()
 export class VendorService {
@@ -11,11 +11,14 @@ export class VendorService {
 
   constructor(private http: HttpClient) { }
 
-  getVendors() {
-    return this.http.get(`${this.apiUrl}`)
+  getVendors(): Observable<IVendor[]> {
+    return this.http.get<IVendor[]>(`${this.apiUrl}`).pipe(
+      tap(data => console.log('Vendors: ' + JSON.stringify(data))
+      )
+    )
   }
 
-  getVendor(vendorId: number) : Observable<IVendor> {
+  getVendor(vendorId: number): Observable<IVendor> {
     console.log('VendorService:getVendor vendorId', vendorId)
 
     let url = `${this.apiUrl}/${vendorId}`
@@ -30,7 +33,7 @@ export class VendorService {
     return this.http.put(this.apiUrl, vendor)
   }
 
-  createVendor(vendor: IVendor) : Observable<number> {
+  createVendor(vendor: IVendor): Observable<number> {
     console.log('createVendor on vendor service is invoked', vendor)
 
     return this.http.post<number>(this.apiUrl, vendor)

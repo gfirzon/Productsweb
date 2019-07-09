@@ -1,72 +1,77 @@
 <section class="section">
-       <div class="container">
+	<div class="container card">
+		<div class="card-content">
+			<form [formGroup]="userForm"
+					(ngSubmit)="onSubmit()"
+					class="text-center border border-light p-5">
+				
+				<div class="card-header title">
+					User
+				</div>
 
-              <form [formGroup]="userForm"
-                    (ngSubmit)="onSubmit()"
-                    class="text-center border border-light p-5">
-                     <h1 class="title">User</h1>
+				<input type="hidden"
+						 formControlName="userID">
 
-                     <input type="hidden"
-                            formControlName="userID">
+				<div class="field">
+					<label class="label">Name</label>
+					<div class="control">
+						<input class="input"
+								 type="text"
+								 placeholder="Enter user name..."
+								 formControlName="userName">
+					</div>
+					<!--<p class="help">some help text</p>-->
+				</div>
 
-                     <div class="field">
-                            <label class="label">Name</label>
-                            <div class="control">
-                                   <input class="input"
-                                          type="text"
-                                          placeholder="Enter user name..."
-                                          formControlName="userName">
-                            </div>
-                            <!--<p class="help">some help text</p>-->
-                     </div>
+				<div class="field">
+					<label class="label">Password</label>
+					<div class="control has-icons-left">
+						<input class="input"
+								 type="password"
+								 placeholder="Enter user password..."
+								 formControlName="userPassword">
+						<span class="icon is-small is-left">
+							<i class="fa fa-key fa-fw"></i>
+						</span>
+					</div>
+				</div>
 
-                     <div class="field">
-                            <label class="label">Password</label>
-                            <div class="control has-icons-left">
-                                   <input class="input"
-                                          type="password"
-                                          placeholder="Enter user password..."
-                                          formControlName="userPassword">
-                                   <span class="icon is-small is-left">
-                                          <i class="fa fa-key fa-fw"></i>
-                                   </span>
-                            </div>
-                     </div>
+				<div class="field">
+					<label class="label">Active</label>
+					<div class="control">
+						<input class=""
+								 type="checkbox"
+								 formControlName="isActive">
+					</div>
+				</div>
 
-                     <div class="field">
-                            <label class="label">Active</label>
-                            <div class="control">
-                                   <input class=""
-                                          type="checkbox"
-                                          formControlName="isActive">
-                            </div>
-                     </div>
+				<div class="field">
+					<label class="label">Role</label>
+					<div class="control">
+						<select formControlName="roleID">
+							<option value="1">System Administrator</option>
+							<option value="2">Company Administrator</option>
+							<option value="3">User</option>
+						</select>
+					</div>
+				</div>
 
-                     <div class="field">
-                            <label class="label">Role</label>
-                            <div class="control">
-                                   <select formControlName="roleID">
-                                          <option value="1">System Administrator</option>
-                                          <option value="2">Company Administrator</option>
-                                          <option value="3">User</option>
-                                   </select>
-                            </div>
-                     </div>
+				<div class="field is-grouped">
 
-                     <div class="field is-grouped">
+					<div class="control">
+						<button type="submit"
+								  class="button is-link is-rounded">Submit</button>
+					</div>
 
-                            <div class="control">
-                                   <button type="submit"
-                                           class="button is-link is-rounded">Submit</button>
-                            </div>
+					<div class="control">
+						<button type="button"
+								  (click)="onCancel()"
+								  class="button is-link is-rounded is-warning">Cancel</button>
+					</div>
+				</div>
+			</form>
+		</div>
 
-                            <div class="control">
-                                   <button type="button"
-                                           (click)="onCancel()"
-                                           class="button is-link is-rounded is-warning">Cancel</button>
-                            </div>
-                     </div>
-              </form>
 
-       </div>
+	</div>
 </section>
