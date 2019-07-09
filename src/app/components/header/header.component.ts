@@ -19,6 +19,7 @@ import { Component, OnInit } from '@angular/core';
           <a class="navbar-item" routerLink="contact">Contact</a>
           <a class="navbar-item" routerLink="users">Users</a>
           <a class="navbar-item" routerLink="vendors">Vendors</a>
+          <a class="navbar-item" routerLink="products">Products</a>
         </div>
       </div>
     </nav>

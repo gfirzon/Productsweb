@@ -1,20 +1,20 @@
 <section class="section">
     <div class="container">
-            <h1>Users</h1>
+        <h1>Products</h1>
 
-            <div class="">
-                <a routerLink="/user">Add User</a>
-            </div>        
-        
+        <div class="">
+            <a routerLink="/product">Add Product</a>
+        </div>        
+
         <div class="columns is-multiline">
 
             <!-- loop over our users and give them each a card -->
             <!--need to put back | async pipe-->
             <div class="column is-4"
-                 *ngFor="let user of users | async">
+                 *ngFor="let product of products | async">
                 <div class="card">
                     <div class="card-content">
-                        <a routerLink="/user/{{ user.userID }}">{{ user.userName }}</a>
+                        <a routerLink="/product/{{ product.productID }}">{{ product.productName }}</a>
                     </div>
                 </div>
             </div>

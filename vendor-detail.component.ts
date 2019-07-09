@@ -29,7 +29,7 @@ export class VendorDetailComponent implements OnInit {
         this.getVendor()
 
         this.vendorForm = this.formBuilder.group({
-            vendorID: [''],
+            vendorID: ['-1'],
             vendorName: ['', [Validators.required]],
             vendorPhone: ['', [Validators.required]],
             email: ['', [Validators.required, Validators.email]]

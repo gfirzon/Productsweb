@@ -14,6 +14,7 @@ import { IUser } from '../../../models/IUser'
 export class UserDetailComponent implements OnInit {
 
     userForm: FormGroup
+    isNew: boolean
 
     constructor(
         private route: ActivatedRoute,
@@ -38,35 +39,70 @@ export class UserDetailComponent implements OnInit {
 
     getUser(): void {
         const id = + this.route.snapshot.paramMap.get('id')
-        this.userService.getUser(id)
-            .subscribe(
-                (user: IUser) => this.showUser(user)
-            )
+        if (id) {
+            this.isNew = false
+            this.userService.getUser(id)
+                .subscribe(
+                    (user: IUser) => this.showUser(user)
+                )
+        }
+        else {
+            this.isNew = true
+        }
     }
+
     //perform work of binding retrived vendor data to form control
     showUser(user: IUser) {
         this.userForm.patchValue({
             userID: user.userID,
-            userName: user.userName,
-            userPassword: '',
+            vuserName: user.userName,
+            vendorPhone: user.userPassword,
             isActive: user.isActive,
-            roleID: user.roleID
+            roleID: user.roleID,
         })
     }
 
-    onSubmit() {
+    createUser() {
         if (this.userForm.valid) {
             console.log('User form is valid!!', this.userForm.value)
 
-            this.userService.updateUser(this.userForm.value)          
+            this.userService.createUser(this.userForm.value)
+                .subscribe((response) => {
+                    console.log('create response ', response)
+                    this.toastr.success("User information saved")
+                })
+        }
+        else {
+            //alert('User form is not valid!!')
+            this.toastr.warning("User information is not complete to be saved")
+        }
+    }
+
+    updateUser() {
+        if (this.userForm.valid) {
+            console.log('User form is valid!!', this.userForm.value)
+
+            this.userService.updateUser(this.userForm.value)
                 .subscribe((response) => {
                     console.log('update response ', response)
                     this.toastr.success("User information saved")
                 })
-        } else {
+        }
+        else {
             //alert('User form is not valid!!')
             this.toastr.warning("User information is not complete to be saved")
         }
+    }
+
+
+    onSubmit() {
+        if (this.isNew == false) {
+            this.updateUser()
+        }
+        else {
+            this.createUser()
+        }
+
     }
 
     onCancel() {
