@@ -1,0 +1,91 @@
+<section class="section">
+    <div class="container">
+
+        <form [formGroup]="productForm"
+              (ngSubmit)="onSubmit()"
+              class="text-center border border-light p-5">
+            <h1 class="title">Product</h1>
+
+            <input type="hidden"
+                   formControlName="productID">
+
+            <div class="field">
+                <label class="label">Name</label>
+                <div class="control">
+                    <input class="input"
+                           type="text"
+                           placeholder="Enter product name..."
+                           formControlName="productName">
+                </div>
+                <p class="help">some help text</p>
+            </div>
+
+            <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <input class="input"
+                           type="text"
+                           placeholder="Enter product description..."
+                           formControlName="productDescription">
+                </div>
+                <p class="help">some help text</p>
+            </div>
+
+            <div class="field">
+                <label class="label">Units In Stock</label>
+                <div class="control">
+                    <input class="input"
+                           type="number"
+                           placeholder="Enter quantity units in stock..."
+                           formControlName="unitsInStock">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Price</label>
+                <div class="control">
+                    <input class="input"
+                           type="number"
+                           placeholder="Enter product sell price"
+                           formControlName="sellPrice">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Discount</label>
+                <div class="control">
+                    <input class="input"
+                           type="number"
+                           placeholder="Enter product discount in %..."
+                           formControlName="discountPercentage">
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">Maximum Units</label>
+                <div class="control">
+                    <input class="input"
+                           type="number"
+                           placeholder="Enter product maximum units ...."
+                           formControlName="unitsMax">
+                </div>
+            </div>
+
+
+            <div class="field is-grouped">
+
+                <div class="control">
+                    <button type="submit"
+                            class="button is-link is-rounded">Submit</button>
+                </div>
+
+                <div class="control">
+                    <button type="button"
+                            (click)="onCancel()"
+                            class="button is-link is-rounded is-warning">Cancel</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</section>

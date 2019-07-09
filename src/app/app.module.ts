@@ -21,7 +21,10 @@ import { ContactComponent } from './components/contact/contact.component'
 import { VendorListComponent } from './components/vendors/vendor-list/vendor-list.component'
 import { VendorDetailComponent } from './components/vendors/vendor-detail/vendor-detail.component'
 
-import { HttpErrorInterceptor } from './services/http-error.interceptor'
+import { HttpErrorInterceptor } from './services/http-error.interceptor';
+import { ProductListComponent } from './components/products/product-list/product-list.component'
+import { ProductDetailComponent } from './components/products/product-detail/product-detail.component'
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { HttpErrorInterceptor } from './services/http-error.interceptor'
     UsersComponent,
     ContactComponent,
     VendorListComponent,
-    VendorDetailComponent
+    VendorDetailComponent,
+    ProductListComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +54,7 @@ import { HttpErrorInterceptor } from './services/http-error.interceptor'
   providers: [
     UserService,
     VendorService,
+    ProductService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,
